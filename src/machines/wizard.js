@@ -2,7 +2,7 @@ import { createMachine, assign } from 'xstate'
 import { dfuMode } from '../usb/dfu.js'
 import { download } from '../usb/dfuse.js'
 
-const response = await fetch('/assets/latest.bin')
+const response = await fetch('/src/assets/linktouch_binaries/latest.bin')
 const file = await response.arrayBuffer()
 
 export const wizard = createMachine({
@@ -27,6 +27,9 @@ export const wizard = createMachine({
     },
     dfu: {
       initial: 'select',
+      on: {
+        'CONTINUE': 'update'
+      },
       states: {
         select: {
           invoke: {
@@ -43,11 +46,17 @@ export const wizard = createMachine({
         set: {
           invoke: {
             src: ({ port }, event) => dfuMode(port),
-            onDone: '#update',
-            onError: '#error'
+            onDone: {
+              target: '#update',
+              actions: () => console.log('dfu.set done')
+            },
+            onError: {
+              target: '#error',
+              actions: () => console.log('dfu.set error')
+            }
           }
         },
-      }
+      },
     },
     update: {
       id: 'update',

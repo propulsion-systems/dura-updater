@@ -1,40 +1,26 @@
 <script setup>
-import { ref } from 'vue';
-import { interpret } from 'xstate'
+import { ref, inject } from 'vue';
 
 import Navigation from './components/Navigation.vue';
 import PageContent from './components/PageContent.vue';
+import { wizard } from './machines/wizard.js';
 
-import { wizard } from './machines/wizard.js'
+import { useMachine } from '@xstate/vue';
+const { state, send } = useMachine(wizard);
+
+
 
 const step = ref(0);
 const error = ref(false);
 const browser_supported = ref(true);
 
-const service = interpret(wizard)
-  .onTransition((state) => {
-    console.log(state.value)
-
-    console.log(state.context.step)
-
-    if (state.matches('start')) step.value = 0
-    if (state.matches('dfu.select')) step.value = 0
-    if (state.matches('update.info')) step.value = 1
-    if (state.matches('update.updating')) step.value = 2
-    if (state.matches('updated')) step.value = 3
-    if (state.matches('unsupported')) browser_supported.value = false
-    if (state.matches('error')) {
-      error.value = true
-    }
-  })
-
-service.start()
+//const service = inject('service');
 
 </script>
 
 <template>
-  <Navigation :step="step" :error="error"/>
-  <PageContent :step="step" :error="error" :browser_supported="browser_supported" :servic="service"/>
+  <Navigation :step="step" :error="error" :machine="{state,send}"/>
+  <PageContent :step="step" :error="error" :browser_supported="browser_supported" :machine="{ state, send }"/>
 </template>
 
 <style scoped>
