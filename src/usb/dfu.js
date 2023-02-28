@@ -36,9 +36,9 @@ export async function dfuMode(port) {
 
   const writer = textEncoder.writable.getWriter()
 
-  await writer.write('dfu\n')
+  await writer.write('dfu\r\n')
 
-  writer.releaseLock()
+  await writer.close()
 
   await writableStreamClosed
 

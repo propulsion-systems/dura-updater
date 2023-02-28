@@ -26,11 +26,16 @@ export const wizard = createMachine({
       }
     },
     dfu: {
-      initial: 'select',
+      initial: 'info',
       on: {
         'CONTINUE': 'update'
       },
       states: {
+        info: {
+            on: {
+                'CONTINUE': 'select'
+            }
+        },
         select: {
           invoke: {
             src: ({ vendor, linktouch }, event) => navigator.serial.requestPort({ filters: [{ usbVendorId: vendor, usbProductId: linktouch }] }),
@@ -45,15 +50,16 @@ export const wizard = createMachine({
         },
         set: {
           invoke: {
-            src: ({ port }, event) => dfuMode(port),
-            onDone: {
-              target: '#update',
-              actions: () => console.log('dfu.set done')
+            src: async ({ port }, event) => {
+
+                console.log('dfu.set')
+                await dfuMode(port)
+                console.log('done')
             },
-            onError: {
-              target: '#error',
-              actions: () => console.log('dfu.set error')
-            }
+            onDone: {
+                target: '#update',
+            },
+            onError: '#error'
           }
         },
       },
