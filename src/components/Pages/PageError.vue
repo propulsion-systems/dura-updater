@@ -1,5 +1,7 @@
 <script setup>
-
+    defineProps({
+        machine: {}
+    })
 </script>
 
 <template>
@@ -20,9 +22,9 @@
             </svg>
         </div>
         <h3 class="text-xl font-semibold">Update failed please try again</h3>
-        <button
-            class="bg-durablue text-white py-2 px-24 rounded-md text-xl m-10 transition delay-100 hover:bg-duraaccent">Try
-            again</button>
+        <button @click="machine.send('RETRY')"
+                class="bg-durablue text-white py-2 px-24 rounded-md text-xl m-10 transition delay-100 hover:bg-duraaccent">Try
+                again</button>
         <p>
             If you manually put your LinkTouch in update mode you can skip this step
         </p>

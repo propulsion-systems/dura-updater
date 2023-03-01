@@ -16,7 +16,6 @@ export const wizard = createMachine({
     port: null,
     start: 0x8000000,
     error: null,
-    step: 0
   },
   states: {
     start: {
@@ -28,12 +27,13 @@ export const wizard = createMachine({
     dfu: {
       initial: 'info',
       on: {
-        'CONTINUE': 'update'
+        'CONTINUE': 'update',
       },
       states: {
         info: {
             on: {
-                'CONTINUE': 'select'
+                'CONTINUE': 'select',
+                'SKIP': '#update',
             }
         },
         select: {
@@ -45,7 +45,7 @@ export const wizard = createMachine({
                 port: (context, { data }) => data
               })
             },
-            onError: '#start'
+            onError: 'info'
           }
         },
         set: {
@@ -70,7 +70,8 @@ export const wizard = createMachine({
       states: {
         info: {
           on: {
-            'CONTINUE': 'select'
+            'CONTINUE': 'select',
+            'RETRY': '#start',
           }
         },
         select: {

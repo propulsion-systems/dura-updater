@@ -26,24 +26,24 @@
         'error'
     ]
 
-    const stepString = computed (() => {
-        const _step = props.machine.state.toStrings();
-        return _step[_step.length - 1]
-    })
-
     const step = computed(() => {
-        const stepString = props.machine.state.toStrings();
-        const _step = steps.indexOf(stepString[stepString.length - 1])
-        return _step;
+        const stepStrings = props.machine.state.toStrings();
+        return steps.indexOf(stepStrings[stepStrings.length - 1])
     })
 
+    const error = computed(() => {
+        return props.machine.state.matches('error') || props.machine.state.matches('unsupported');
+    })
 
 </script>
 
 <template>
     <header class="bg-durablue shadow">
+        <div class="text-white bg-red-700 py-4 px-8" v-if="false">
+            debugbar: {{step}} - {{props.machine.state.toStrings()}}
+        </div>
         <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold leading-tight text-center text-white">LinkTouch Updater {{ step }} {{ stepString }} </h1>
+            <h1 class="text-3xl font-bold leading-tight text-center text-white">LinkTouch Updater</h1>
             <div class="mx-4 p-6 pt-10">
                 <div class="flex items-center">
                     <NavigationItem index="0" :step="step" name="Start" :error="error">
@@ -69,7 +69,6 @@
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
                     </NavigationItem>
-                    <button @click="machine.send('CONTINUE')">test</button>
                 </div>  
             </div>
         </div>

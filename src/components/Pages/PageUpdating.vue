@@ -1,7 +1,11 @@
 <script setup>
+import ManualDfuModal from '../ManualDfuModal.vue';
+import { ref } from 'vue';
     const props = defineProps({
         machine: {}
     })
+
+    const open = ref(false);
 </script>
 <template>
 
@@ -11,8 +15,18 @@
         <span class="text-duraaccent">STM32 BOOTLOADER - Paired</span> and click connect
     </p>
 
-    <button @click="machine.send('CONTINUE')" class="bg-durablue text-white py-2 rounded-md mt-5 text-xl transition delay-100 hover:bg-duraaccent w-2/6">Select LinkTouch</button>
+    <div class="flex flex-col items-center gap-4 mt-5">
+        <button @click="machine.send('CONTINUE')" class="bg-durablue text-white py-2 rounded-md text-xl transition duration-300 hover:bg-duraaccent w-2/6">Select LinkTouch</button>
+    <button @click="machine.send('RETRY')" class="bg-duraaccent text-white py-2 rounded-md text-xl transition duration-300 hover:bg-durablue w-2/6">Restart Updater</button>
+    </div>
 
+    <div class="mt-5">
+        <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
+
+    <ManualDfuModal :open="open">
+        <button @click="open = false" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-durablue px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-duraaccent transition duration-300 focus:outline-none sm:text-sm">Understood</button>
+    </ManualDfuModal>
+    </div>
 </div>
 
 </template>
