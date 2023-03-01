@@ -6,7 +6,7 @@
         <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
     </svg>
     <p class="text-lg pt-10">Updating the LinkTouch...</p>
-    <p class="py-10">Don't leave or refresh this page</p>
+    <p class="py-10">Don't close or refresh this page</p>
 </div>
 
 </template>

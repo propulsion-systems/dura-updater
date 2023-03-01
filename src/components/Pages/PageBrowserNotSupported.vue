@@ -1,7 +1,7 @@
 <template>
 
-<div class="container py-10">
-    <svg id="not_supported" class="m-auto p-6" xmlns="http://www.w3.org/2000/svg" width="430.31" height="280.31" viewBox="0 0 523 340.682">
+<div class="container py-5 md:py-10 max-w-sm mx-auto">
+    <svg id="not_supported" class="m-auto p-6 w-64 md:w-96" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 523 340.682">
         <circle id="Ellipse_6" data-name="Ellipse 6" cx="43.067" cy="43.067" r="43.067" transform="translate(366.948 279.775) rotate(-45)" fill="#2f2e41"/>
         <circle id="Ellipse_7" data-name="Ellipse 7" cx="14.719" cy="14.719" r="14.719" transform="matrix(0.976, -0.216, 0.216, 0.976, 406.879, 258.178)" fill="#fff"/>
         <circle id="Ellipse_8" data-name="Ellipse 8" cx="4.906" cy="4.906" r="4.906" transform="matrix(0.976, -0.216, 0.216, 0.976, 412.618, 261.837)" fill="#3f3d56"/>
@@ -44,8 +44,8 @@
         <circle id="Ellipse_26" data-name="Ellipse 26" cx="6.467" cy="6.467" r="6.467" transform="translate(490.753 209.703)" fill="#f2f2f2"/>
         </svg>
         
-    <h3 class="text-xl py-10 font-semibold">Please try using one of the following browsers instead.</h3>
-    <img src="/src/assets/browsers.png" class="m-auto p-6" alt="">
+    <h3 class="text-xl py-5 md:py-10 font-semibold">Please try using one of the following browsers instead.</h3>
+    <img src="/src/assets/browsers.png" class="m-auto p-6 w-fit" alt="">
     <p class="text-lg">If you are using one of these browsers please update to the last version.</p>
 </div>
 

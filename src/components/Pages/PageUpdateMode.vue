@@ -11,14 +11,14 @@ import { ref } from 'vue'
 </script>
 
 <template>
-            <div class="py-10 ">
+            <div class="py-10 max-w-xs mx-auto">
                 <h3 class="text-xl font-semibold">First we need to put the LinkTouch in update mode.</h3>
                 <p class="text-lg pt-10">Please select 
                     <span class="text-duraaccent">DURALink LinkTouch</span> and click connect
                 </p>
-                <div class="flex flex-col gap-4 items-center mt-5 max-w-md mx-auto">
-                    <button @click="machine.send('CONTINUE')" class="bg-durablue text-white w-full py-2 px-24 rounded-md text-xl transition duration-300 hover:bg-duraaccent">Select LinkTouch</button>
-                    <button @click="machine.send('SKIP')" class="bg-duraaccent text-white w-full py-2 px-24 rounded-md text-xl transition duration-300 hover:bg-durablue">Already in DFU mode</button>
+                <div class="flex flex-col gap-4 items-center mt-5 max-w-xs md:max-w-md mx-auto">
+                    <button @click="machine.send('CONTINUE')" class="bg-durablue text-white w-full py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-duraaccent">Select LinkTouch</button>
+                    <button @click="machine.send('SKIP')" class="bg-duraaccent text-white w-full py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-durablue">Already in DFU mode</button>
                 </div>
                 <p class="pt-10 text-gray-400">
                     If you manually put your LinkTouch in update mode you can skip this step

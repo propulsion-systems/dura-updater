@@ -9,15 +9,15 @@ import { ref } from 'vue';
 </script>
 <template>
 
-<div class="container py-10 ">
+<div class="container py-10 max-w-xs mx-auto">
     <h3 class="text-xl font-semibold">LinkTouch is now in update mode</h3>
     <p class="text-lg pt-10">Please select 
         <span class="text-duraaccent">STM32 BOOTLOADER - Paired</span> and click connect
     </p>
 
-    <div class="flex flex-col items-center gap-4 mt-5">
-        <button @click="machine.send('CONTINUE')" class="bg-durablue text-white py-2 rounded-md text-xl transition duration-300 hover:bg-duraaccent w-2/6">Select LinkTouch</button>
-    <button @click="machine.send('RETRY')" class="bg-duraaccent text-white py-2 rounded-md text-xl transition duration-300 hover:bg-durablue w-2/6">Restart Updater</button>
+    <div class="flex flex-col items-center gap-4 mt-5 max-w-xs md:max-w-md mx-auto">
+        <button @click="machine.send('CONTINUE')" class="bg-durablue text-white py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-duraaccent w-full">Select LinkTouch</button>
+    <button @click="machine.send('RETRY')" class="bg-duraaccent text-white py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-durablue w-full">Restart Updater</button>
     </div>
 
     <div class="mt-5">
