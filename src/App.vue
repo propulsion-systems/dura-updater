@@ -1,17 +1,26 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, inject } from 'vue';
+
+import Navigation from './components/Navigation.vue';
+import PageContent from './components/PageContent.vue';
+import { wizard } from './machines/wizard.js';
+
+import { useMachine } from '@xstate/vue';
+const { state, send } = useMachine(wizard);
+
+
+
+const step = ref(0);
+const error = ref(false);
+const browser_supported = ref(true);
+
+//const service = inject('service');
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Navigation :step="step" :error="error" :machine="{state,send}"/>
+  <PageContent :step="step" :error="error" :browser_supported="browser_supported" :machine="{ state, send }"/>
 </template>
 
 <style scoped>
