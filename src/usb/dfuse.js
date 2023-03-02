@@ -49,7 +49,8 @@ export async function erase(device, file, start, segments) {
     const sectorIndex = Math.floor((address - segment.start) / segment.sectorSize)
     const sectorAddr = segment.start + sectorIndex * segment.sectorSize
 
-    console.log(`Erasing ${segment.sectorSize}B at 0x${sectorAddr.toString(16)}`)
+    //console.log(`Erasing ${segment.sectorSize}B at 0x${sectorAddr.toString(16)}`)
+    console.log(`Erasing: ${Math.floor(bytesErased / bytesToErase * 100)}%`)
 
     await dfuseCommand({
       device,
@@ -81,14 +82,15 @@ export async function download(device, file, start) {
   console.log('Starting download')
 
   while (bytes_sent < file.byteLength) {
-    console.log(`Bytes send: ${bytes_sent}`)
+    //console.log(`Bytes send: ${bytes_sent}`)
+    console.log(`Uploading: ${Math.floor(bytes_sent / file.byteLength * 100)}%`)
 
     const bytes_left = file.byteLength - bytes_sent
     const chunk_size = Math.min(bytes_left, transfer_size)
 
     const data = file.slice(bytes_sent, bytes_sent + chunk_size)
 
-    console.log(`Set adress to: 0x${address.toString(16)}`)
+    //console.log(`Set adress to: 0x${address.toString(16)}`)
 
     await dfuseCommand({
       device,
@@ -104,7 +106,8 @@ export async function download(device, file, start) {
       data,
     })
 
-    console.log(`Bytes writen: ${bytesWritten}`)
+    //console.log(`Bytes writen: ${bytesWritten}`)
+    console.log(`Uploading: ${Math.floor(bytes_sent / file.byteLength * 100)}%`)
 
     await pollUntil(device, state => (state == STATES.DOWNLOAD_IDLE))
 

@@ -11,7 +11,7 @@ import { ref } from 'vue'
 </script>
 
 <template>
-            <div class="py-10 max-w-xs mx-auto">
+            <div class="py-10 max-w-xs md:max-w-md mx-auto">
                 <h3 class="text-xl font-semibold">First we need to put the LinkTouch in update mode.</h3>
                 <p class="text-lg pt-10">Please select 
                     <span class="text-duraaccent">DURALink LinkTouch</span> and click connect

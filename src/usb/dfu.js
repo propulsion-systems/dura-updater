@@ -36,9 +36,9 @@ export async function dfuMode(port) {
 
   const writer = textEncoder.writable.getWriter()
 
-  await writer.write('dfu\r\n')
+  await writer.write('dfu\n')
 
-  await writer.close()
+  writer.releaseLock()
 
   await writableStreamClosed
 
@@ -86,7 +86,7 @@ export async function reset(device) {
 export async function pollUntil(device, predicate) {
   let status = await getStatus(device)
 
-  console.log(`Initial idle status | state=${status.state}, status=${status.status}, timeout=${status.timeout}`)
+  //console.log(`Initial idle status | state=${status.state}, status=${status.status}, timeout=${status.timeout}`)
 
   const sleep = duration => new Promise((resolve, reject) => setTimeout(resolve, duration))
 
