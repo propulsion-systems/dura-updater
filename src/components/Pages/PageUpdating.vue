@@ -9,7 +9,7 @@ import { ref } from 'vue';
 </script>
 <template>
 
-<div class="container py-10 max-w-xs mx-auto">
+<div class="container py-10 max-w-xs md:max-w-md mx-auto">
     <h3 class="text-xl font-semibold">LinkTouch is now in update mode</h3>
     <p class="text-lg pt-10">Please select 
         <span class="text-duraaccent">STM32 BOOTLOADER - Paired</span> and click connect
