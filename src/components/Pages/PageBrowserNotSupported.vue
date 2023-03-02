@@ -45,7 +45,7 @@
         </svg>
         
     <h3 class="text-xl py-5 md:py-10 font-semibold">Please try using one of the following browsers instead.</h3>
-    <img src="/assets/browsers.png" class="m-auto p-6 w-fit" alt="">
+    <img src="/browsers.png" class="m-auto p-6 w-fit" alt="">
     <p class="text-lg">If you are using one of these browsers please update to the last version.</p>
 </div>
 

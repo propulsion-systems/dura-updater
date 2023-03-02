@@ -21,7 +21,7 @@ defineProps({
                     <div class="mt-3 sm:mt-5">
                         <DialogTitle as="h3" class="text-base font-semibold text-gray-900">How to put your LinkTouch in update mode?</DialogTitle>
                         <div>
-                            <img src="/assets/linktouch_manual_dfu.jpg" alt="" class="md:w-2/4 mx-auto pb-6 md:py-6">
+                            <img src="/linktouch_manual_dfu.jpg" alt="" class="md:w-2/4 mx-auto pb-6 md:py-6">
                             <p class="text-sm text-gray-500 leading-relaxed">
                                 To manually put your "LinkTouch" device into DFU mode, follow these steps:
                                 <ul class="list-decimal list-inside py-6">
