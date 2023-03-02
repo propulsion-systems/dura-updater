@@ -2,7 +2,7 @@ import { createMachine, assign } from 'xstate'
 import { dfuMode } from '../usb/dfu.js'
 import { download } from '../usb/dfuse.js'
 
-const response = await fetch('/assets/linktouch_binaries/latest.bin')
+const response = await fetch('/assets/latest.bin')
 const file = await response.arrayBuffer()
 
 export const wizard = createMachine({
