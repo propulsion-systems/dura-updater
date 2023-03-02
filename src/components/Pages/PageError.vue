@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue';
-import ManualDfuModal from '../ManualDfuModal.vue';
- 
-    defineProps({
-        machine: {}
-    })
+import { ref } from 'vue'
+import { useWizard } from '../../composables/wizard.js'
+
+import ManualDfuModal from '../ManualDfuModal.vue'
+
+const { send } = useWizard()
 
 const open = ref(false)
 </script>
@@ -27,16 +27,17 @@ const open = ref(false)
             </svg>
         </div>
         <h3 class="text-xl font-semibold">Update failed please try again</h3>
-        <button @click="machine.send('RETRY')"
-                class="bg-durablue text-white py-2 px-24 rounded-md text-xl m-10 transition delay-100 hover:bg-duraaccent">Try
-                again</button>
+        <button @click="send('RETRY')"
+            class="bg-durablue text-white py-2 px-24 rounded-md text-xl m-10 transition delay-100 hover:bg-duraaccent">Try
+            again</button>
         <p>
             If you manually put your LinkTouch in update mode you can skip this step
         </p>
         <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
 
-    <ManualDfuModal :open="open">
-        <button @click="open = false" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-durablue px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-duraaccent transition duration-300 focus:outline-none sm:text-sm">Understood</button>
-    </ManualDfuModal>
+        <ManualDfuModal :open="open">
+            <button @click="open = false" type="button"
+                class="inline-flex w-full justify-center rounded-md border border-transparent bg-durablue px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-duraaccent transition duration-300 focus:outline-none sm:text-sm">Understood</button>
+        </ManualDfuModal>
     </div>
 </template>

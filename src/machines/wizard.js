@@ -7,6 +7,7 @@ const file = await response.arrayBuffer()
 
 export const wizard = createMachine({
   id: 'wizard',
+  predictableActionArguments: true,
   initial: 'usb' in navigator ? 'start' : 'unsupported',
   context: {
     vendor: 0x483,
@@ -31,10 +32,10 @@ export const wizard = createMachine({
       },
       states: {
         info: {
-            on: {
-                'CONTINUE': 'select',
-                'SKIP': '#update',
-            }
+          on: {
+            'CONTINUE': 'select',
+            'SKIP': '#update',
+          }
         },
         select: {
           invoke: {
@@ -52,12 +53,12 @@ export const wizard = createMachine({
           invoke: {
             src: async ({ port }, event) => {
 
-                console.log('dfu.set')
-                await dfuMode(port)
-                console.log('done')
+              console.log('dfu.set')
+              await dfuMode(port)
+              console.log('done')
             },
             onDone: {
-                target: '#update',
+              target: '#update',
             },
             onError: '#error'
           }
