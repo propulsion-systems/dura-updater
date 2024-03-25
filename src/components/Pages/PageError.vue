@@ -33,7 +33,8 @@ const open = ref(false)
         <p>
             If you manually put your LinkTouch in update mode you can skip this step
         </p>
-        <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
+        <a href="#" class="text-duraaccent hover:text-durablue duration-300 underline underline-offset-4" @click="open = true">How to manually put the LinkTouch in update mode?</a>
+        <a href="#" class="text-duraaccent hover:text-durablue duration-300 underline underline-offset-4" @click="open = true">My LinkTouch doesnt react anymore</a>
 
         <ManualDfuModal :open="open">
             <button @click="open = false" type="button"

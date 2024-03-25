@@ -21,7 +21,7 @@ const open = ref(false)
                 LinkTouch</button>
             <button @click="send('SKIP')"
                 class="bg-duraaccent text-white w-full py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-durablue">Already
-                in DFU mode</button>
+                in update mode</button>
         </div>
         <p class="pt-10 text-gray-400">
             If you manually put your LinkTouch in update mode you can skip this step
