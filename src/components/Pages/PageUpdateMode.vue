@@ -13,21 +13,25 @@ const open = ref(false)
     <div class="py-10 max-w-xs md:max-w-md mx-auto">
         <h3 class="text-xl font-semibold">First we need to put the LinkTouch in update mode.</h3>
         <p class="text-lg pt-10">Please select
-            <span class="text-duraaccent">DURALink LinkTouch</span> and click connect
+            <span class="text-duraaccent">DURALink LinkTouch</span> by clicking the button below and click connect
         </p>
         <div class="flex flex-col gap-4 items-center mt-5 max-w-xs md:max-w-md mx-auto">
             <button @click="send('CONTINUE')"
                 class="bg-durablue text-white w-full py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-duraaccent">Select
                 LinkTouch</button>
-            <button @click="send('SKIP')"
-                class="bg-duraaccent text-white w-full py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-durablue">Already
-                in update mode</button>
+            
         </div>
-        <p class="pt-10 text-gray-400">
+        
+
+        <div class="grid pt-10 gap-4">
+            <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
+            <p class="text-gray-400">
             If you manually put your LinkTouch in update mode you can skip this step
         </p>
-
-        <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
+        <a href="#" @click="send('SKIP')"
+                class="text-duraaccent">Already
+                in update mode</a>
+        </div>
 
         <ManualDfuModal :open="open">
             <button @click="open = false" type="button"

@@ -18,14 +18,20 @@ const open = ref(false)
         <div class="flex flex-col items-center gap-4 mt-5 max-w-xs md:max-w-md mx-auto">
             <button @click="send('CONTINUE')"
                 class="bg-durablue text-white py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-duraaccent w-full">Select
-                LinkTouch</button>
-            <button @click="send('RETRY')"
-                class="bg-duraaccent text-white py-2 px-4 rounded-md md:text-xl transition duration-300 hover:bg-durablue w-full">Restart
-                Updater</button>
+                Bootloader</button>
         </div>
+        <div class="grid pt-10 gap-4">
+            <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
+            <div class="grid">
+                <p class="text-gray-400">
+                Restart the updating procedure by clicking below.
+            </p>
+            <a href="#" @click="send('RETRY')"
+                class="text-duraaccent">Restart the updater</a>
+            </div>
+        </div>  
 
         <div class="mt-5">
-            <a href="#" class="text-duraaccent" @click="open = true">How to manually put the LinkTouch in update mode?</a>
 
             <ManualDfuModal :open="open">
                 <button @click="open = false" type="button"
