@@ -27,6 +27,7 @@ export const STATES = {
 const STATUS_OK = 0x0
 
 export async function dfuMode(port) {
+    console.log('Entering DFU mode')
   await port.open({
     baudRate: 9600,
   })
@@ -43,6 +44,7 @@ export async function dfuMode(port) {
   await writableStreamClosed
 
   await port.close()
+  console.log('DFU mode entered')
 }
 
 export async function getStatus(device) {

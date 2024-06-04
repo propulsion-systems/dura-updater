@@ -54,7 +54,7 @@ export const wizard = createMachine({
             src: async ({ port }, event) => {
 
               console.log('dfu.set', port)
-              await dfuMode(port)
+              dfuMode(port)
               console.log('done')
             },
             onDone: {
